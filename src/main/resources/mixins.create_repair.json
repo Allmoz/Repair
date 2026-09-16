@@ -52,6 +52,7 @@
     "bug_fixes.dupes.PostboxBlockEntityMixin",
     "bug_fixes.dupes.SchematicPrinterMixin",
     "bug_fixes.dupes.voiding.BeltInventoryMixin",
+    "bug_fixes.dupes.voiding.PackagerItemHandlerMixin",
     "bug_fixes.dupes.voiding.ToolboxInventoryMixin",
     "bug_fixes.dupes.voiding.TreeFertilizerItemMixin",
     "bug_fixes.farlands_ejector.EjectorBlockEntityMixin",

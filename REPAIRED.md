@@ -23,6 +23,7 @@ Unticked checkboxes indicate the issue is fixed in dev but not released yet.
 - [x] [Fix Biomes We've Gone compatibility recipes](https://github.com/Creators-of-Create/Create/issues/9500)
 - [x] [Fix the Bound Cardboard crafting recipe using `minecraft:string` instead of `forge:string`](https://github.com/Creators-of-Create/Create/issues/9501) (Thanks, IThundxr!)
 - [x] [Fix Environmental compatibility recipes](https://github.com/Creators-of-Create/Create/pull/8471)
+- [ ] [Fix Neapolitan milk emptying recipe requiring the wrong milk bottle](https://github.com/Creators-of-Create/Create/pull/10719)
 
 ## Bugs Fixed
 - [x] [Fix a precision error in TrackNodeLocation](https://github.com/Creators-of-Create/Create/issues/9509) (Thanks, IThundxr!)
@@ -54,6 +55,7 @@ Unticked checkboxes indicate the issue is fixed in dev but not released yet.
 - [x] [Fix yet more block/entity interactions not accounting for (in/decreased reach)](https://github.com/Creators-of-Create/Create/commit/9c2f16dd8614544a8d47c6bc514f511be22e865a) (Thanks, IThundxr!)
 - [x] [Fix ejectors at high distances](https://github.com/Creators-of-Create/Create/pull/10395) (Thanks, Ocelot5836!)
 - [ ] [Fix ploughs breaking after extensive use](https://github.com/Creators-of-Create/Create/commit/3229cc1059943732dc784490fe7543f590ddb05f) (Thanks, IThundxr!)
+- [ ] [Fix packager voiding boxes when requested amount is 0](https://github.com/Creators-of-Create/Create/pull/10426)
 - [x] [PORTING-LIB] [Fix reach attribute helpers having significantly different (lower reach) behaviour from Forge](https://github.com/Fabricators-of-Create/Porting-Lib/pull/198)
 
 ## Crashes Fixed
