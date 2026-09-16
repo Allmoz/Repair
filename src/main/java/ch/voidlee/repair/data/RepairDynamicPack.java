@@ -9,6 +9,7 @@ import com.mojang.serialization.JsonOps;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.Create;
+import com.simibubi.create.content.fluids.transfer.EmptyingRecipe;
 import com.simibubi.create.content.kinetics.millstone.MillingRecipe;
 import com.simibubi.create.content.kinetics.press.PressingRecipe;
 import com.simibubi.create.content.kinetics.saw.CuttingRecipe;
@@ -34,6 +35,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.WeatheringCopper;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.conditions.FalseCondition;
@@ -97,6 +99,7 @@ public class RepairDynamicPack extends DynamicPack {
         updatedEnvironmentalCompat();
         updatedAutumnityCompat();
         fixGalosphereCompat();
+        fixNeapolitanCompat();
 
         for (Map.Entry<ResourceLocation, Collection<TagEntry>> tags : ITEM_TAGS.asMap().entrySet()) {
             TagFile tagFile = new TagFile(new ArrayList<>(tags.getValue()), false);
@@ -488,6 +491,16 @@ public class RepairDynamicPack extends DynamicPack {
         disableRecipe("galosphere/crushed_raw_silver", SPLASHING);
         disableRecipe("silver_ingot_compat_galosphere", SMELTING);
         disableRecipe("silver_ingot_compat_galosphere", BLASTING);
+    }
+
+    // https://github.com/Creators-of-Create/Create/pull/10719
+    private void fixNeapolitanCompat() {
+        new Builder<>("compat/neapolitan/milk_bottle", EmptyingRecipe::new)
+                .require(Mods.NEA, "milk_bottle")
+                .output(ForgeMod.MILK.get(), 250)
+                .output(Items.GLASS_BOTTLE)
+                .whenModLoaded(Mods.NEA.getId())
+                .build();
     }
 
     private void insertIntoTag(ResourceLocation tag, ResourceLocation itemId, Multimap<ResourceLocation, TagEntry> tagMap) {
