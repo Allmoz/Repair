@@ -7,11 +7,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.repository.Pack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
@@ -29,10 +32,15 @@ public class Repair {
             LOGGER.warn("{} requires Fabric Mixin for some of its fixes, which isn't present. The mod will work fine, but those fixes will be disabled. This can be resolved by installing either Mixinbooster (recommended) or Sinytra Connector", NAME);
         }
 
-        IEventBus bus = FMLJavaModLoadingContext.get()
+        IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+        IEventBus modBus = FMLJavaModLoadingContext.get()
                 .getModEventBus();
 
-        bus.addListener(Repair::addPackFinders);
+        modBus.addListener(Repair::addPackFinders);
+
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            RepairClient.init(forgeBus, modBus);
+        }
     }
 
     private static void addPackFinders(AddPackFindersEvent event) {
